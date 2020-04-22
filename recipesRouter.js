@@ -1,14 +1,15 @@
 const express = require('express');
+
+const Recipe = require('./data/recipes-model.js');
+
 const router = express.Router();
-const Recipe = require('./data/recipes-model');
+
 
 router.get('/', (req,res) => {
-    console.log(req)
+    //console.log(req)
     Recipe.getRecipes()
         .then(res => {
-            res.status(200).json({
-                data : res
-            })
+            res.status(200).json(res)
         })
         .catch(err => {
             res.status(400).json({
